@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import DoenetTest from './DoenetTest';
 
 class App extends Component {
 
@@ -12,9 +13,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        Hi there
-      </div>
+      <DoenetTest />
     );
   }  
 }
