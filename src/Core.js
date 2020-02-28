@@ -4,16 +4,18 @@ class Core{
   constructor({coreReadyCallback,coreUpdatedCallback}){
     
     this.fullListOfRenderers = [
-      "document",
-      "p"
+      "Document",
+      "P"
     ]
 
     this.treeOfRenderers = [
       {
-        rendererType:"document",
+        rendererType:"Document",
+        componentName:"_document1",
         stateVariableData:{},
         children:[{
-          rendererType:"p",
+          componentName:"_p1",
+          rendererType:"P",
           stateVariableData:{text:"1"},
           children:[],
         }
