@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Core from './Core';
-import Document from './Renderers/Document';
-import P from './Renderers/P';
-
 
 
 class DoenetViewer extends Component {
@@ -15,9 +12,6 @@ class DoenetViewer extends Component {
     this.core = new Core({coreReadyCallback:this.coreReady,coreUpdatedCallback:this.update});
     this.doenetRenders = <>Loading...</>
   }
-
-
-
 
   coreReady(){
     let renderPromises = [];
@@ -35,11 +29,40 @@ class DoenetViewer extends Component {
   }
 
   buildTree(){
-      let P = React.createElement(this.renderers["P"], {key:"first"}); 
-      
-      this.doenetRenders = <>{P}</>
-      this.forceUpdate();
+    this.doenetRenders = this.buildTreeHelper(this.core.treeOfRenderers);
+    console.log("this.doenetRenders");
+    console.log(this.doenetRenders);
+    
+    this.forceUpdate();
+
+      // let P = React.createElement(this.renderers["P"], {key:"first"}); 
+      // this.doenetRenders = <>{P}</>
+      // this.forceUpdate();
   }
+
+  //Build tree depth first
+  buildTreeHelper(tree){
+    var reactArray = [];
+    var children = [];
+    for (let node of tree){
+      if (node.children.length > 0){
+        //if has children go deeper
+        children = this.buildTreeHelper(node.children);
+      }
+        
+      let reactComponent = React.createElement(this.renderers[node.rendererType], {key:node.componentName,children,svData:node.stateVariableData}); 
+        reactArray.push(reactComponent);
+
+        // reactArray.push({name:node.componentName,children})
+      
+    }
+    
+    return reactArray;
+ 
+    
+    
+  }
+
 
   update(){
     console.log('UPDATE!');
