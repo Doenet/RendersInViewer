@@ -9,7 +9,7 @@ class DoenetViewer extends Component {
     this.coreReady = this.coreReady.bind(this);
     this.buildTree = this.buildTree.bind(this);
 
-    this.temp = {};
+    this.rendererUpdateObjects = {};
 
     this.core = new Core({ coreReadyCallback: this.coreReady, coreUpdatedCallback: this.update });
     this.doenetRenders = <>Loading...</>
@@ -44,16 +44,16 @@ class DoenetViewer extends Component {
         //if has children go deeper
         children = this.buildTreeHelper(node.children);
       }
-      let updatable = {};
+      let updateObject = {};
       let reactComponent = React.createElement(this.renderers[node.rendererType],
         {
           key: node.componentName,
           children,
           svData: node.stateVariableData,
-          updatable,
+          updateObject,
         });
       reactArray.push(reactComponent);
-      this.temp[node.componentName] = updatable;
+      this.rendererUpdateObjects[node.componentName] = updateObject;
 
       // reactArray.push({name:node.componentName,children})
 
@@ -66,11 +66,16 @@ class DoenetViewer extends Component {
   }
 
 
-  update() {
+  update(instructions) {
     console.log('UPDATE!');
-    console.log(this.temp._p1);
+    for (let instruction of instructions){
+      if (instruction.instructionType === "UpdateStateVariable"){
+        for (let componentName in instruction.newStateVariableValues){
+          this.rendererUpdateObjects[componentName].update(instruction.newStateVariableValues[componentName]);
+        }
+      }
+    }
 
-    this.temp._p1.callUpdate('hello from update')
 
   }
 
