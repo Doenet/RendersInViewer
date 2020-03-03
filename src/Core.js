@@ -22,7 +22,7 @@ class Core {
         {
           componentName: "_p2",
           rendererType: "P",
-          stateVariableData: { text: "2" },
+          stateVariableData: { text: "4" },
           children: [],
         }
         ]
@@ -36,36 +36,49 @@ class Core {
     setTimeout(coreReadyCallback, 0);
 
     //Update information in viewer
+   
+
     let instructions = [
       {
-        instructionType: "UpdateStateVariable",
-        newStateVariableValues: {
-          _p1:
-          {
-            text: "hello",
-          },
-          _p2:
-          {
-            text: "there",
-          }
-        }
+        instructionType: "AddComponents",
+        parentComponentName: "_document1",
+        // addedChildrenIndexes:[2,3,4],
+        childIndex:1,
+        components:[{
+          componentName: "_p3",
+          rendererType: "P",
+          stateVariableData: { text: "2" },
+          children: [],
+        },{
+          componentName: "_p4",
+          rendererType: "P",
+          stateVariableData: { text: "3" },
+          children: [],
+        }]
 
-      },
+      }
+    ]
+
+    setTimeout(() => coreUpdatedCallback(instructions), 2000);
+
+ let instructions2 = [
       {
         instructionType: "UpdateStateVariable",
         newStateVariableValues: {
           _p1:
           {
-            text: "one",
+            text: "Start",
           },
           _p2:
           {
-            text: "two",
+            text: "End",
           }
         }
 
       }]
-    setTimeout(() => coreUpdatedCallback(instructions), 2000);
+
+
+    setTimeout(() => coreUpdatedCallback(instructions2), 4000);
 
   }
 }

@@ -73,6 +73,10 @@ class DoenetViewer extends Component {
         for (let componentName in instruction.newStateVariableValues){
           this.rendererUpdateObjects[componentName].update(instruction.newStateVariableValues[componentName]);
         }
+      }else if (instruction.instructionType === "AddComponents"){
+        let renderer = this.rendererUpdateObjects[instruction.parentComponentName];
+        let newComponents = this.buildTreeHelper(instruction.components);
+        renderer.addRemoveChildren("add",instruction.childIndex,newComponents);
       }
     }
 
