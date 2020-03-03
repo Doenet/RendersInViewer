@@ -11,7 +11,6 @@ export default class Document extends Component{
 
     this.props.updateObject.addChildren = this.addChildren;
     this.props.updateObject.removeChildren = this.removeChildren;
-
   }
 
   addChildren(index,components){

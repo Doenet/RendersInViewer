@@ -6,7 +6,7 @@ const { resolve } = require('path')
 
 
 module.exports = {
-    // devtool: 'source-map',
+    devtool: 'source-map',
 
      entry: {
       "index.js" : "./src/index.js",

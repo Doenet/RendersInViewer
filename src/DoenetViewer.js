@@ -12,7 +12,10 @@ class DoenetViewer extends Component {
     this.rendererUpdateObjects = {};
 
     this.core = new Core({ coreReadyCallback: this.coreReady, coreUpdatedCallback: this.update });
+
     this.doenetRenders = <>Loading...</>
+
+
   }
 
   coreReady() {
@@ -51,6 +54,7 @@ class DoenetViewer extends Component {
           children,
           svData: node.stateVariableData,
           updateObject,
+          requestUpdate:this.core.requestUpdate,
         });
       reactArray.push(reactComponent);
       this.rendererUpdateObjects[node.componentName] = updateObject;
@@ -68,7 +72,7 @@ class DoenetViewer extends Component {
 
   update(instructions) {
     for (let instruction of instructions){
-    console.log(`${instruction.instructionType}!`);
+    // console.log(`${instruction.instructionType}!`);
 
       if (instruction.instructionType === "UpdateStateVariable"){
         for (let componentName in instruction.newStateVariableValues){
@@ -83,7 +87,6 @@ class DoenetViewer extends Component {
         for (let delChildName of instruction.childNames){
           delete this.rendererUpdateObjects[delChildName];
         }
-        console.log(this.rendererUpdateObjects);
         
         renderer.removeChildren(instruction.childIndex,instruction.numberToRemove);
         
