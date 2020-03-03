@@ -65,8 +65,9 @@ class Core {
       {
         instructionType: "DeleteComponents",
         parentComponentName: "_document1",
-        componentName: "_p1",
+        childNames:["_p1","_p3"],
         childIndex:0,
+        numberToRemove:2,
       }]
 
 
@@ -76,13 +77,13 @@ class Core {
       {
         instructionType: "UpdateStateVariable",
         newStateVariableValues: {
-          _p3:
+          _p4:
           {
-            text: "Start",
+            text: "One",
           },
           _p2:
           {
-            text: "End",
+            text: "Two",
           }
         }
 

@@ -4,21 +4,24 @@ import React, { Component } from 'react';
 export default class Document extends Component{
   constructor(props){
     super(props);
-    this.addRemoveChildren = this.addRemoveChildren.bind(this);
+    this.addChildren = this.addChildren.bind(this);
+    this.removeChildren = this.removeChildren.bind(this);
+
     this.children = this.props.children;
 
-    this.props.updateObject.addRemoveChildren = this.addRemoveChildren;
+    this.props.updateObject.addChildren = this.addChildren;
+    this.props.updateObject.removeChildren = this.removeChildren;
 
   }
 
-  addRemoveChildren(addOrRemove,index,components){
-    if (addOrRemove === "add"){
+  addChildren(index,components){
       this.children.splice(index,0,...components);
       this.forceUpdate();
-    }else{
-      this.children.splice(index,1);
+  }
+
+  removeChildren(index,numberToRemove){
+      this.children.splice(index,numberToRemove);
       this.forceUpdate();
-    }
   }
 
   render(){

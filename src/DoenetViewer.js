@@ -77,11 +77,15 @@ class DoenetViewer extends Component {
       }else if (instruction.instructionType === "AddComponents"){
         let renderer = this.rendererUpdateObjects[instruction.parentComponentName];
         let newComponents = this.buildTreeHelper(instruction.components);
-        renderer.addRemoveChildren("add",instruction.childIndex,newComponents);
+        renderer.addChildren(instruction.childIndex,newComponents);
       }else if (instruction.instructionType === "DeleteComponents"){
         let renderer = this.rendererUpdateObjects[instruction.parentComponentName];
-        delete this.rendererUpdateObjects[instruction.componentName];
-        renderer.addRemoveChildren("remove",instruction.childIndex);
+        for (let delChildName of instruction.childNames){
+          delete this.rendererUpdateObjects[delChildName];
+        }
+        console.log(this.rendererUpdateObjects);
+        
+        renderer.removeChildren(instruction.childIndex,instruction.numberToRemove);
         
       }
     }
