@@ -13,14 +13,12 @@ export default class Document extends Component{
 
   addRemoveChildren(addOrRemove,index,components){
     if (addOrRemove === "add"){
-      //Add
       this.children.splice(index,0,...components);
       this.forceUpdate();
     }else{
-      //Remove
-
+      this.children.splice(index,1);
+      this.forceUpdate();
     }
-
   }
 
   render(){

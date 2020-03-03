@@ -67,8 +67,9 @@ class DoenetViewer extends Component {
 
 
   update(instructions) {
-    console.log('UPDATE!');
     for (let instruction of instructions){
+    console.log(`${instruction.instructionType}!`);
+
       if (instruction.instructionType === "UpdateStateVariable"){
         for (let componentName in instruction.newStateVariableValues){
           this.rendererUpdateObjects[componentName].update(instruction.newStateVariableValues[componentName]);
@@ -77,6 +78,11 @@ class DoenetViewer extends Component {
         let renderer = this.rendererUpdateObjects[instruction.parentComponentName];
         let newComponents = this.buildTreeHelper(instruction.components);
         renderer.addRemoveChildren("add",instruction.childIndex,newComponents);
+      }else if (instruction.instructionType === "DeleteComponents"){
+        let renderer = this.rendererUpdateObjects[instruction.parentComponentName];
+        delete this.rendererUpdateObjects[instruction.componentName];
+        renderer.addRemoveChildren("remove",instruction.childIndex);
+        
       }
     }
 

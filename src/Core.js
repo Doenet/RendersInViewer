@@ -63,9 +63,20 @@ class Core {
 
  let instructions2 = [
       {
+        instructionType: "DeleteComponents",
+        parentComponentName: "_document1",
+        componentName: "_p1",
+        childIndex:0,
+      }]
+
+
+    setTimeout(() => coreUpdatedCallback(instructions2), 4000);
+
+    let instructions3 = [
+      {
         instructionType: "UpdateStateVariable",
         newStateVariableValues: {
-          _p1:
+          _p3:
           {
             text: "Start",
           },
@@ -78,7 +89,7 @@ class Core {
       }]
 
 
-    setTimeout(() => coreUpdatedCallback(instructions2), 4000);
+    setTimeout(() => coreUpdatedCallback(instructions3), 6000);
 
   }
 }
