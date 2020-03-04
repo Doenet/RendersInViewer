@@ -1,32 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import DoenetRenderer from './DoenetRenderer';
 
 
-export default class NumberRenderer extends Component{
-  constructor(props){
-    super(props);
+export default class NumberRenderer extends DoenetRenderer{
 
-    this.children = this.props.children;
-    this.update = this.update.bind(this);
-
-    this.props.updateObject.update = this.update;
-
-    this.state = {
-      value:props.svData.value
-    }
-
-  }
-
-
-
-  update(newStateVariables){
-    this.setState(newStateVariables)
-  }
-
+  
   render(){
-    let value = Number(this.state.value)+1;
+    let value = Number(this.doenetSvData.value)+1;
     
     return <div width="100px" height="100px" 
     onClick={()=>this.props.requestUpdate({value})}>
-      {this.state.value}</div>
+      {this.doenetSvData.value}</div>
   }
 }

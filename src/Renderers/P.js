@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import DoenetRenderer from './DoenetRenderer';
 
-export default class P extends Component{
-  constructor(props){
-    super(props);
-    this.update = this.update.bind(this);
-
-    this.props.updateObject.update = this.update;
-
-    this.state = {
-      text:props.svData.text
-    }
-  }
-
-  update(newStateVariables){
-    this.setState(newStateVariables)
-  }
-
+export default class P extends DoenetRenderer{
+ 
   render(){
-    return <p>{this.state.text}</p>
+    return <p>{this.doenetSvData.text}</p>
   }
 }

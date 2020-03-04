@@ -8,7 +8,8 @@ class Core {
 
     this.fullListOfRenderers = [
       "Document",
-      "NumberRenderer"
+      "NumberRenderer",
+      "P",
     ]
     this.treeOfRenderers = [
       {
@@ -16,9 +17,14 @@ class Core {
         componentName: "_document1",
         stateVariableData: {},
         children: [{
+          componentName: "_p1",
+          rendererType: "P",
+          stateVariableData: { text: "Click on the number to increase it" },
+          children: [],
+        },{
           componentName: "_number1",
           rendererType: "NumberRenderer",
-          stateVariableData: { value: "1" },
+          stateVariableData: { value: "1", value2: "2", value3: "3" },
           children: [],
         }]
       }
