@@ -34,7 +34,5 @@ export default class DoenetRenderer extends Component {
     this.forceUpdate();
   }
 
-  render() {
-    return <div>DoenetRenderer</div>
-  }
+ 
 }

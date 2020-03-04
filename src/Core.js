@@ -13,17 +13,17 @@ class Core {
     ]
     this.treeOfRenderers = [
       {
-        rendererType: "Document",
+        componentType: "Document",
         componentName: "_document1",
         stateVariableData: {},
         children: [{
           componentName: "_p1",
-          rendererType: "P",
+          componentType: "P",
           stateVariableData: { text: "Click on the number to increase it" },
           children: [],
         },{
           componentName: "_number1",
-          rendererType: "NumberRenderer",
+          componentType: "NumberRenderer",
           stateVariableData: { value: "1", value2: "2", value3: "3" },
           children: [],
         }]
@@ -62,18 +62,18 @@ export default Core;
 
     // this.treeOfRenderers = [
     //   {
-    //     rendererType: "Document",
+    //     componentType: "Document",
     //     componentName: "_document1",
     //     stateVariableData: {},
     //     children: [{
     //       componentName: "_p1",
-    //       rendererType: "P",
+    //       componentType: "P",
     //       stateVariableData: { text: "1" },
     //       children: [],
     //     },
     //     {
     //       componentName: "_p2",
-    //       rendererType: "P",
+    //       componentType: "P",
     //       stateVariableData: { text: "4" },
     //       children: [],
     //     }
@@ -96,12 +96,12 @@ export default Core;
 //         childIndex:1,
 //         components:[{
 //           componentName: "_p3",
-//           rendererType: "P",
+//           componentType: "P",
 //           stateVariableData: { text: "2" },
 //           children: [],
 //         },{
 //           componentName: "_p4",
-//           rendererType: "P",
+//           componentType: "P",
 //           stateVariableData: { text: "3" },
 //           children: [],
 //         }]

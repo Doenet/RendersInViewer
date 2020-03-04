@@ -48,7 +48,7 @@ class DoenetViewer extends Component {
         children = this.buildTreeHelper(node.children);
       }
       let updateObject = {};
-      let reactComponent = React.createElement(this.renderers[node.rendererType],
+      let reactComponent = React.createElement(this.renderers[node.componentType],
         {
           key: node.componentName,
           children,
@@ -70,6 +70,7 @@ class DoenetViewer extends Component {
   }
 
 
+  //offscreen then postpone that one
   update(instructions) {
     for (let instruction of instructions){
     // console.log(`${instruction.instructionType}!`);
